@@ -645,8 +645,8 @@ export default function SkillsPage() {
       if (mobile) {
         const width = window.innerWidth;
         // Calculate dynamic scale factor to fit visualizer (max extent ~839px)
-        // Clamp scale factor between 0.40 and 0.53
-        const computedScale = Math.max(0.40, Math.min(0.53, (width - 10) / 780));
+        // Clamp scale factor between 0.48 and 0.58
+        const computedScale = Math.max(0.48, Math.min(0.58, (width - 10) / 720));
         setScaleFactor(computedScale);
       }
     };
@@ -683,7 +683,7 @@ export default function SkillsPage() {
   const glowColorHex = activeSkillNode ? activeSkillNode.glowHex : "#fb923c";
 
   const ambientParticles = React.useMemo(() => {
-    return Array.from({ length: 20 }, (_, idx) => ({
+    return Array.from({ length: isMobile ? 6 : 20 }, (_, idx) => ({
       id: idx,
       size: Math.random() * 2 + 1,
       x: (Math.random() - 0.5) * (isMobile ? 420 : 640),

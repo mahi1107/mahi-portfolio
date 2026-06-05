@@ -115,8 +115,6 @@ export default function Layout() {
             muted
             playsInline
             style={{ 
-              transform: 'scale(1.08)', 
-              transformOrigin: 'top left',
               opacity: 1 - bgMedia.overlayStrength,
               filter: bgMedia.blurIntensity ? `blur(${bgMedia.blurIntensity}px)` : 'none'
             }}
