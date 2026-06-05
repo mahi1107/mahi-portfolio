@@ -64,9 +64,10 @@ npm run build
 ```
 This builds optimized HTML, JS, and CSS chunks into the `dist/` folder.
 
-### 2. Vercel Deployment (Recommended)
+### 2. Netlify Deployment (Recommended)
 1. Push your repository to **GitHub**.
-2. Connect your GitHub account to [Vercel](https://vercel.com).
-3. Import this project, Vercel will auto-detect **Vite** and configure the build settings.
-4. Add environment variables (if any) in the Vercel dashboard.
-5. Click **Deploy** to publish it to the web.
+2. Connect your GitHub account to [Netlify](https://www.netlify.com).
+3. Click **Add new site** > **Import an existing project** and select this repository.
+4. Confirm build settings (Build command: `npm run build`, Publish directory: `dist`).
+5. Add any environment variables (e.g. `VITE_API_BASE_URL`) in **Site settings** under Environment variables.
+6. Click **Deploy site** to publish it to the web.

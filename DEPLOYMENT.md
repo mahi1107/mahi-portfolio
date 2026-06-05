@@ -40,20 +40,23 @@ git push -u origin main
 
 ---
 
-## ⚡ Step 2: Connect GitHub to Vercel for Free Hosting
+## ⚡ Step 2: Connect GitHub to Netlify for Free Hosting
 
-1. Visit [Vercel](https://vercel.com) and click **Sign Up** (or Log In) choosing **Continue with GitHub**.
-2. From the Vercel Dashboard, click the **Add New** button on the right side and select **Project**.
-3. Locate `mahi-portfolio` in the list of your GitHub repositories and click **Import**.
-4. In the configuration window:
-   * **Framework Preset:** Vite (Vercel will auto-detect this).
-   * **Root Directory:** `./` (leave default).
-   * **Build and Output Settings:** Leave default (Build command is `npm run build` and Output directory is `dist`).
-   * **Environment Variables:** If you have a live backend URL, add an environment variable:
-     - **Name:** `VITE_API_BASE_URL`
+1. Visit [Netlify](https://www.netlify.com) and click **Sign Up** (or Log In) choosing **GitHub** to authenticate.
+2. From your Netlify Dashboard, click the **Add new site** button and select **Import an existing project**.
+3. Select **GitHub** as your Git provider, authorize Netlify, and search for `mahi-portfolio` in your repositories.
+4. In the site configuration settings:
+   * **Branch to deploy:** `main`
+   * **Base directory:** Leave blank or set to `./` (leave default).
+   * **Build command:** `npm run build`
+   * **Publish directory:** `dist`
+5. Configure Environment Variables:
+   * Go to **Site configuration** > **Environment variables** on the left menu (or add them during setup).
+   * Click **Add a variable** and configure:
+     - **Key:** `VITE_API_BASE_URL`
      - **Value:** `https://your-backend-api.com`
-5. Click the **Deploy** button.
-6. Once deployment finishes (takes ~1 minute), Vercel will give you a live URL (e.g., `mahi-portfolio.vercel.app`).
+6. Click **Deploy site** (or **Deploy mahi-portfolio**).
+7. Once the build finishes (~1-2 minutes), Netlify will provide a live URL (e.g., `mahi-portfolio.netlify.app`).
 
 ---
 
