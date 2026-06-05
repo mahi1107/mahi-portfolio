@@ -42,7 +42,7 @@ Thumbs.db
 ehthumbs.db
 
 # MongoDB local storage
-data/
+/data/
 db/
 *.db
 *.sqlite
