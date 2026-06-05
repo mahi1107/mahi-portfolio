@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  --animation-iteration: infinite;
+}
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --color-accent: #fb923c;
+  --color-accent-hover: #f97316;
+  --animate-spin-slow: spin 8s linear infinite;
+}
+
+body {
+  background-color: #080808;
+  color: #d4d4d8;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Subtle premium dark grid overlay */
+.bg-grid-pattern {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+}
+
+/* Custom premium solid card style */
+.solid-card {
+  background-color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+}
+
+.solid-card:hover {
+  border-color: rgba(251, 146, 60, 0.25);
+  box-shadow: 0 10px 30px -15px rgba(251, 146, 60, 0.08);
+}
+
+/* --- COSMIC PARALLAX BACKGROUND STYLES --- */
+
+.cosmic-parallax-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #090b11 0%, #030303 100%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.cosmic-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  animation: animStar 50s linear var(--animation-iteration);
+}
+
+.cosmic-stars-medium {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  animation: animStar 100s linear var(--animation-iteration);
+}
+
+.cosmic-stars-large {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  animation: animStar 150s linear var(--animation-iteration);
+}
+
+#horizon {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+#horizon .glow {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 200px;
+  background: radial-gradient(ellipse at center, rgba(251, 146, 60, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+#earth {
+  position: absolute;
+  bottom: -400px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle at top, #020617 30%, #fb923c 100%);
+  box-shadow: 0 0 60px rgba(251, 146, 60, 0.15);
+  border: 1px solid rgba(251, 146, 60, 0.2);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+#title {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 800;
+  color: #FFF;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  letter-spacing: 35px;
+  padding-left: 35px;
+  animation: animGravity 10s ease-in-out var(--animation-iteration);
+  z-index: 10;
+  user-select: none;
+  pointer-events: none;
+}
+
+#subtitle {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #fb923c;
+  text-align: center;
+  margin-top: 20px;
+  z-index: 10;
+  user-select: none;
+  pointer-events: none;
+  letter-spacing: 2px;
+}
+
+.subtitle-part-1 {
+  opacity: 0;
+  display: inline-block;
+  animation: animDont 10s ease-in-out var(--animation-iteration);
+}
+
+.subtitle-part-2 {
+  opacity: 0;
+  display: inline-block;
+  animation: animLet 10s ease-in-out var(--animation-iteration);
+}
+
+.subtitle-part-3 {
+  opacity: 0;
+  display: inline-block;
+  animation: animGo 10s ease-in-out var(--animation-iteration);
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+@keyframes animGravity {
+  0% {
+    transform: translateY(-26px);
+    opacity: 0;
+  }
+  30%, 80% {
+    letter-spacing: 40px;
+    padding-left: 40px;
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  92%, 100% {
+    letter-spacing: 35px;
+    padding-left: 35px;
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+}
+
+@keyframes animDont {
+  0%, 15% {
+    transform: translateY(-26px);
+    opacity: 0;
+  }
+  35%, 80% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  92%, 100% {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+}
+
+@keyframes animLet {
+  0%, 25% {
+    transform: translateY(-26px);
+    opacity: 0;
+  }
+  45%, 80% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  92%, 100% {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+}
+
+@keyframes animGo {
+  0%, 35% {
+    transform: translateY(-26px);
+    opacity: 0;
+  }
+  55%, 80% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  92%, 100% {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes subtle-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px -5px rgba(0,0,0,0.5), 0 0 12px -4px var(--glow-color, rgba(251, 146, 60, 0.2)), inset 0 1px 1px rgba(255,255,255,0.05);
+  }
+  50% {
+    box-shadow: 0 4px 16px -3px rgba(0,0,0,0.6), 0 0 18px -1px var(--glow-color, rgba(251, 146, 60, 0.3)), inset 0 1px 1px rgba(255,255,255,0.1);
+  }
+}
+
+.glow-pill-pulse {
+  animation: subtle-glow-pulse 4s ease-in-out infinite;
+}
+
+
+/* Premium Organic Noise Overlay animation */
+@keyframes noise-shift {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-0.5%, -0.5%); }
+  20% { transform: translate(-1%, 0.5%); }
+  30% { transform: translate(0.5%, -1%); }
+  40% { transform: translate(-0.5%, 1.5%); }
+  50% { transform: translate(-0.5%, 0.5%); }
+  60% { transform: translate(1.5%, -0.5%); }
+  70% { transform: translate(1%, 0.5%); }
+  80% { transform: translate(-1%, 1%); }
+  90% { transform: translate(0.5%, -1.5%); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-noise-overlay {
+  animation: noise-shift 0.3s steps(10) infinite;
+}
+
+/* Premium Left Edge Accent shifting gradient animation */
+@keyframes accent-gradient-y {
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+}
+
+.animate-accent-gradient {
+  background-size: 100% 200%;
+  animation: accent-gradient-y 3s ease infinite;
+}
+
+/* SVG Connection Line Dash Pulse Animation */
+@keyframes pulse-dash {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-pulse-dash {
+  animation: pulse-dash 1.2s linear infinite;
+}
+
+/* Glow Text Utility for centerpiece headers */
+.glow-text {
+  text-shadow: 0 0 10px rgba(251, 146, 60, 0.45), 0 0 20px rgba(251, 146, 60, 0.2);
+}
+
