@@ -542,22 +542,25 @@ export default function ProjectsPage() {
       </AnimatePresence>
 
       {/* Premium Glassmorphic Toast Notification */}
-      <AnimatePresence>
-        {showToast && (
-          <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 25, scale: 0.9 }}
-            className="fixed bottom-6 right-6 z-[9999] px-6 py-4 rounded-2xl bg-neutral-950/80 border border-white/10 shadow-2xl backdrop-blur-xl flex items-center gap-3 font-sans select-none"
-            style={{ boxShadow: '0 10px 40px -10px rgba(0,0,0,0.7)' }}
-          >
-            <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-            <span className="text-xs font-mono font-bold tracking-wider text-neutral-300 uppercase">
-              {toastMessage}
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {createPortal(
+        <AnimatePresence>
+          {showToast && (
+            <motion.div
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 25, scale: 0.9 }}
+              className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:right-6 md:translate-x-0 z-[100000] px-6 py-4 rounded-2xl bg-neutral-950/80 border border-white/10 shadow-2xl backdrop-blur-xl flex items-center justify-center md:justify-start gap-3 font-sans select-none w-[90%] max-w-sm sm:w-auto text-center"
+              style={{ boxShadow: '0 10px 40px -10px rgba(0,0,0,0.7)' }}
+            >
+              <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+              <span className="text-xs font-mono font-bold tracking-wider text-neutral-300 uppercase">
+                {toastMessage}
+              </span>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </Section>
   );
 }

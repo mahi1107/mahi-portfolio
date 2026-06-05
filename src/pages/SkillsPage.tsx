@@ -548,6 +548,7 @@ function BentoGlowCard({ number, title, description, tags, className = '', index
 export default function SkillsPage() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [scaleFactor, setScaleFactor] = useState(0.46);
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
   const toggleCategory = (cat: string) => {
@@ -562,7 +563,7 @@ export default function SkillsPage() {
   const [orbitTitle, setOrbitTitle] = useState("Mahi Singh");
   const [orbitSubtitle, setOrbitSubtitle] = useState("Full Stack + AI");
   const [orbitDescription, setOrbitDescription] = useState("Creating premium user interfaces, analytical backend architectures, and intelligent systems.");
-  const [orbitRadius, setOrbitRadius] = useState(231);
+  const [orbitRadius, setOrbitRadius] = useState(330);
   const [orbitGlow, setOrbitGlow] = useState(75);
   const [orbitSpeed, setOrbitSpeed] = useState(25);
   const [orbitSkills, setOrbitSkills] = useState<SkillNode[]>(skillsList);
@@ -639,7 +640,15 @@ export default function SkillsPage() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile) {
+        const width = window.innerWidth;
+        // Calculate dynamic scale factor to fit visualizer (max extent ~839px)
+        // Clamp scale factor between 0.40 and 0.53
+        const computedScale = Math.max(0.40, Math.min(0.53, (width - 10) / 780));
+        setScaleFactor(computedScale);
+      }
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -648,10 +657,9 @@ export default function SkillsPage() {
 
   const getCoordinates = (angle: number, ring: 1 | 2) => {
     const rad = (angle * Math.PI) / 180;
-    // Dynamic radius computed from orbitRadius
     const baseRadius = orbitRadius;
-    const r1 = isMobile ? baseRadius * 0.65 : baseRadius;
-    const r2 = isMobile ? baseRadius * 0.97 : baseRadius * 1.43;
+    const r1 = isMobile ? baseRadius * 0.75 : baseRadius;
+    const r2 = isMobile ? baseRadius * 1.15 : baseRadius * 1.43;
     const r = ring === 1 ? r1 : r2;
     return {
       x: r * Math.cos(rad),
@@ -665,9 +673,9 @@ export default function SkillsPage() {
     description: `Specialized engineering node configured dynamically in orbital core: ${hoveredSkill}.`,
     points: ["Dynamic Integration", "Verified Capability"]
   }) : {
-    title: orbitTitle,
-    subtitle: orbitSubtitle,
-    description: orbitDescription,
+    title: "MAHI SINGH",
+    subtitle: "FULL STACK + AI",
+    description: "Creating premium user interfaces, analytical backend architectures, and intelligent systems.",
     points: ["Modern Web Development", "Algorithmic Problem Solving", "Emerging AI Tech"]
   };
 
@@ -686,8 +694,8 @@ export default function SkillsPage() {
   }, [isMobile]);
 
   // Concentric circle background diameter calculations
-  const r1 = isMobile ? orbitRadius * 0.65 : orbitRadius;
-  const r2 = isMobile ? orbitRadius * 0.97 : orbitRadius * 1.43;
+  const r1 = isMobile ? orbitRadius * 0.75 : orbitRadius;
+  const r2 = isMobile ? orbitRadius * 1.15 : orbitRadius * 1.43;
   const d1 = r1 * 2;
   const d2 = r2 * 2;
 
@@ -718,8 +726,14 @@ export default function SkillsPage() {
 
             {/* Centerpiece: Interactive Radar/Orbit Visualizer */}
             <div
-              className="relative w-full h-[425px] md:h-[800px] flex items-center justify-center overflow-visible my-8 select-none origin-center"
-              style={isMobile ? { transform: 'scale(0.72)', transformOrigin: 'center center' } : undefined}
+              className="relative w-full flex items-center justify-center overflow-visible my-8 select-none origin-center"
+              style={isMobile ? { 
+                transform: `scale(${scaleFactor})`, 
+                transformOrigin: 'center center',
+                height: `${1050 * scaleFactor}px`
+              } : {
+                height: '1050px'
+              }}
             >
 
               {/* Layer 0: Ambient Star Particles Layer */}
@@ -773,10 +787,8 @@ export default function SkillsPage() {
                     transition: 'width 0.3s, height 0.3s'
                   }}
                 />
-              </div>
-
-              {/* Layer 3: Layered Glass-Core Centerpiece Hub */}
-              <div className="absolute z-30 w-[238px] h-[238px] md:w-[312px] md:h-[312px] flex items-center justify-center pointer-events-auto">
+              </div>              {/* Layer 3: Layered Glass-Core Centerpiece Hub */}
+              <div className="absolute z-30 w-[450px] h-[450px] flex items-center justify-center pointer-events-auto">
                 {/* Outer Ambient Glow Ring */}
                 <div
                   className="absolute inset-0 rounded-full blur-xl opacity-75 animate-pulse transition-colors duration-500"
@@ -796,11 +808,11 @@ export default function SkillsPage() {
 
                 {/* Inner Gradient Core Container */}
                 <div
-                  className="absolute inset-0 rounded-full border border-white/10 flex flex-col items-center justify-center p-5 text-center select-none shadow-[inset_0_0_35px_rgba(251,146,60,0.1)] transition-all duration-500 overflow-hidden"
+                  className="absolute inset-0 rounded-full border border-white/10 flex flex-col items-center justify-center p-8 text-center select-none shadow-[inset_0_0_60px_rgba(251,146,60,0.2)] transition-all duration-500 overflow-hidden"
                   style={{
                     background: hoveredSkill
                       ? `radial-gradient(circle, rgba(10,10,20,0.85) 0%, ${glowColorHex}12 70%, rgba(0,0,0,0.95) 100%)`
-                      : 'radial-gradient(circle, rgba(10,10,20,0.85) 0%, rgba(251,146,60,0.06) 70%, rgba(0,0,0,0.95) 100%)'
+                      : 'radial-gradient(circle, rgba(10,10,20,0.85) 0%, rgba(251, 146, 60, 0.06) 70%, rgba(0,0,0,0.95) 100%)'
                   }}
                 >
                   {/* Cyber grid lines */}
@@ -822,7 +834,7 @@ export default function SkillsPage() {
                       className="flex flex-col items-center justify-center h-full w-full space-y-3 relative z-10"
                     >
                       <h4
-                        className="text-white font-black text-xs sm:text-sm md:text-base font-display uppercase tracking-widest transition-all duration-300"
+                        className="text-white font-black text-xl font-display uppercase tracking-widest transition-all duration-300"
                         style={{
                           color: hoveredSkill ? '#ffffff' : '#fdba74',
                           textShadow: hoveredSkill
@@ -833,23 +845,23 @@ export default function SkillsPage() {
                         {activeCenter.title}
                       </h4>
                       <span
-                        className="text-[8px] sm:text-[9px] md:text-[10px] font-extrabold font-mono tracking-widest block uppercase transition-colors duration-300"
+                        className="text-xs font-extrabold font-mono tracking-widest block uppercase transition-colors duration-300"
                         style={{
                           color: hoveredSkill ? glowColorHex : 'rgba(251, 146, 60, 0.8)'
                         }}
                       >
                         {activeCenter.subtitle}
                       </span>
-                      <p className="text-neutral-300 text-[10px] sm:text-[11px] md:text-[12px] leading-relaxed font-sans font-light max-w-[130px] md:max-w-[200px] mx-auto py-1">
+                      <p className="text-neutral-300 text-sm leading-relaxed font-sans font-light max-w-[320px] mx-auto py-1">
                         {activeCenter.description}
                       </p>
 
                       {/* Expanded Point Stack */}
-                      <div className="hidden md:flex flex-col items-center gap-1.5 pt-2.5 border-t border-white/10 w-full">
+                      <div className="flex flex-col items-center gap-1.5 pt-3.5 border-t border-white/10 w-full">
                         {(activeCenter.points || []).map((pt) => (
                           <span
                             key={pt}
-                            className="text-[9px] md:text-[10px] font-mono tracking-wide transition-colors duration-300"
+                            className="text-xs font-mono tracking-wide transition-colors duration-300"
                             style={{
                               color: hoveredSkill ? `${glowColorHex}e0` : 'rgba(251, 146, 60, 0.7)'
                             }}
@@ -874,7 +886,7 @@ export default function SkillsPage() {
                 {/* Connection lines for Ring 1 nodes */}
                 <svg
                   className="absolute inset-0 pointer-events-none z-0 overflow-visible w-full h-full"
-                  viewBox="-375 -375 750 750"
+                  viewBox="-520 -520 1040 1040"
                 >
                   {orbitSkills.filter(n => n.ring === 1).map((node) => {
                     const { x, y } = getCoordinates(node.angle, node.ring);
@@ -996,9 +1008,9 @@ export default function SkillsPage() {
                 {/* connection lines for Ring 2 nodes */}
                 <svg
                   className="absolute inset-0 pointer-events-none z-0 overflow-visible w-full h-full"
-                  viewBox="-375 -375 750 750"
+                  viewBox="-520 -520 1040 1040"
                 >
-                  {orbitSkills.filter(n => n.ring === 2 && !isMobile).map((node) => {
+                  {orbitSkills.filter(n => n.ring === 2).map((node) => {
                     const { x, y } = getCoordinates(node.angle, node.ring);
                     const isHovered = hoveredSkill === node.name;
                     return (
@@ -1029,7 +1041,7 @@ export default function SkillsPage() {
                 </svg>
 
                 {/* Ring 2 Gradient Glass Pills mapping */}
-                {orbitSkills.filter(n => n.ring === 2 && !isMobile).map((node) => {
+                {orbitSkills.filter(n => n.ring === 2).map((node) => {
                   const { x, y } = getCoordinates(node.angle, node.ring);
                   const isHovered = hoveredSkill === node.name;
 
