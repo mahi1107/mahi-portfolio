@@ -42,7 +42,7 @@ export default function Layout() {
     // Socket.io room join
     const socket = io(import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000');
     socket.emit('portfolio:join', 'mahi');
-    
+
     socket.on('brand_identity_ms:updated', (payload: any) => {
       if (payload.brandIdentity) {
         console.log("⚡ Received live brand identity update:", payload.brandIdentity);
@@ -114,7 +114,7 @@ export default function Layout() {
             loop
             muted
             playsInline
-            style={{ 
+            style={{
               opacity: 1 - bgMedia.overlayStrength,
               filter: bgMedia.blurIntensity ? `blur(${bgMedia.blurIntensity}px)` : 'none'
             }}
@@ -125,7 +125,7 @@ export default function Layout() {
           <img
             src={bgMedia.heroBackgroundImage}
             className="w-full h-full object-cover"
-            style={{ 
+            style={{
               opacity: 1 - bgMedia.overlayStrength,
               filter: bgMedia.blurIntensity ? `blur(${bgMedia.blurIntensity}px)` : 'none'
             }}
@@ -165,7 +165,7 @@ export default function Layout() {
 
         {/* Unified Global Shared Footer */}
         {globalExperience?.footer?.visuals?.footerEnabled !== false && (
-          <footer 
+          <footer
             className="border-t border-white/5 py-5 sm:py-8 px-4 sm:px-6 text-center text-xs select-none max-w-7xl mx-auto rounded-t-2xl mt-16 w-full font-sans space-y-1"
             style={{
               backgroundColor: globalExperience?.footer?.visuals?.footerGlassEffect ? 'rgba(0, 0, 0, 0.4)' : 'transparent',
@@ -174,7 +174,7 @@ export default function Layout() {
               color: globalExperience?.footer?.visuals?.footerTextColor || 'inherit'
             }}
           >
-            <p 
+            <p
               className="font-medium"
               style={{
                 color: globalExperience?.footer?.visuals?.footerAccentColor || '#a3a3a3'
@@ -182,9 +182,7 @@ export default function Layout() {
             >
               {globalExperience?.footer?.heading || `Designed & Developed by ${nameValue}`}
             </p>
-            <p className="text-[10px] uppercase tracking-widest font-sans">
-              {globalExperience?.footer?.techStackText || "React • Tailwind • Motion"}
-            </p>
+
           </footer>
         )}
       </div>

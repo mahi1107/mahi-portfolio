@@ -563,7 +563,7 @@ export default function SkillsPage() {
   const [orbitTitle, setOrbitTitle] = useState("Mahi Singh");
   const [orbitSubtitle, setOrbitSubtitle] = useState("Full Stack + AI");
   const [orbitDescription, setOrbitDescription] = useState("Creating premium user interfaces, analytical backend architectures, and intelligent systems.");
-  const [orbitRadius, setOrbitRadius] = useState(330);
+  const [orbitRadius, setOrbitRadius] = useState(320);
   const [orbitGlow, setOrbitGlow] = useState(75);
   const [orbitSpeed, setOrbitSpeed] = useState(25);
   const [orbitSkills, setOrbitSkills] = useState<SkillNode[]>(skillsList);
@@ -658,8 +658,8 @@ export default function SkillsPage() {
   const getCoordinates = (angle: number, ring: 1 | 2) => {
     const rad = (angle * Math.PI) / 180;
     const baseRadius = orbitRadius;
-    const r1 = isMobile ? baseRadius * 0.75 : baseRadius;
-    const r2 = isMobile ? baseRadius * 1.15 : baseRadius * 1.43;
+    const r1 = isMobile ? baseRadius * 0.95 : baseRadius;
+    const r2 = isMobile ? baseRadius * 1.05 : baseRadius * 1.43;
     const r = ring === 1 ? r1 : r2;
     return {
       x: r * Math.cos(rad),
@@ -694,8 +694,8 @@ export default function SkillsPage() {
   }, [isMobile]);
 
   // Concentric circle background diameter calculations
-  const r1 = isMobile ? orbitRadius * 0.75 : orbitRadius;
-  const r2 = isMobile ? orbitRadius * 1.15 : orbitRadius * 1.43;
+  const r1 = isMobile ? orbitRadius * 0.95 : orbitRadius;
+  const r2 = isMobile ? orbitRadius * 1.05 : orbitRadius * 1.43;
   const d1 = r1 * 2;
   const d2 = r2 * 2;
 
@@ -727,8 +727,8 @@ export default function SkillsPage() {
             {/* Centerpiece: Interactive Radar/Orbit Visualizer */}
             <div
               className="relative w-full flex items-center justify-center overflow-visible my-8 select-none origin-center"
-              style={isMobile ? { 
-                transform: `scale(${scaleFactor})`, 
+              style={isMobile ? {
+                transform: `scale(${scaleFactor})`,
                 transformOrigin: 'center center',
                 height: `${1050 * scaleFactor}px`
               } : {
@@ -834,7 +834,7 @@ export default function SkillsPage() {
                       className="flex flex-col items-center justify-center h-full w-full space-y-3 relative z-10"
                     >
                       <h4
-                        className="text-white font-black text-xl font-display uppercase tracking-widest transition-all duration-300"
+                        className="text-white font-black text-3xl font-display uppercase tracking-widest transition-all duration-300"
                         style={{
                           color: hoveredSkill ? '#ffffff' : '#fdba74',
                           textShadow: hoveredSkill
@@ -845,14 +845,14 @@ export default function SkillsPage() {
                         {activeCenter.title}
                       </h4>
                       <span
-                        className="text-xs font-extrabold font-mono tracking-widest block uppercase transition-colors duration-300"
+                        className="text-base font-extrabold font-mono tracking-widest block uppercase transition-colors duration-300"
                         style={{
                           color: hoveredSkill ? glowColorHex : 'rgba(251, 146, 60, 0.8)'
                         }}
                       >
                         {activeCenter.subtitle}
                       </span>
-                      <p className="text-neutral-300 text-sm leading-relaxed font-sans font-light max-w-[320px] mx-auto py-1">
+                      <p className="text-neutral-400 text-base leading-relaxed font-sans font-light max-w-[320px] mx-auto py-1">
                         {activeCenter.description}
                       </p>
 
@@ -861,7 +861,7 @@ export default function SkillsPage() {
                         {(activeCenter.points || []).map((pt) => (
                           <span
                             key={pt}
-                            className="text-xs font-mono tracking-wide transition-colors duration-300"
+                            className="text-base font-mono tracking-wide transition-colors duration-300"
                             style={{
                               color: hoveredSkill ? `${glowColorHex}e0` : 'rgba(251, 146, 60, 0.7)'
                             }}
@@ -960,7 +960,7 @@ export default function SkillsPage() {
                           onMouseLeave={() => setHoveredSkill(null)}
                         >
                           <div
-                            className={`px-4 py-2.5 rounded-full border bg-gradient-to-br backdrop-blur-md text-[11px] md:text-xs font-sans tracking-wide transition-all duration-300 whitespace-nowrap flex items-center gap-2 ${node.borderClass} ${node.bgGradient} ${isHovered ? '' : 'glow-pill-pulse'}`}
+                            className={`px-7 py-4.5 rounded-full border bg-gradient-to-br backdrop-blur-md text-[15px] md:text-xs font-sans tracking-wide transition-all duration-300 whitespace-nowrap flex items-center gap-2 ${node.borderClass} ${node.bgGradient} ${isHovered ? '' : 'glow-pill-pulse'}`}
                             style={{
                               '--glow-color': node.glowColor,
                               boxShadow: isHovered
@@ -1082,7 +1082,7 @@ export default function SkillsPage() {
                           onMouseLeave={() => setHoveredSkill(null)}
                         >
                           <div
-                            className={`px-4 py-2.5 rounded-full border bg-gradient-to-br backdrop-blur-md text-[11px] md:text-xs font-sans tracking-wide transition-all duration-300 whitespace-nowrap flex items-center gap-2 ${node.borderClass} ${node.bgGradient} ${isHovered ? '' : 'glow-pill-pulse'}`}
+                            className={`px-7 py-4.5 rounded-full border bg-gradient-to-br backdrop-blur-md text-[15px] md:text-xs font-sans tracking-wide transition-all duration-300 whitespace-nowrap flex items-center gap-2 ${node.borderClass} ${node.bgGradient} ${isHovered ? '' : 'glow-pill-pulse'}`}
                             style={{
                               '--glow-color': node.glowColor,
                               boxShadow: isHovered
