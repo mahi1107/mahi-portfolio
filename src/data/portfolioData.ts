@@ -9,10 +9,15 @@ export interface ProjectItem {
   highlight?: string;
   size: 'large' | 'medium' | 'small';
   imageUrl?: string;
+  heroBanner?: string;
   category?: string;
   teamIndicator?: string;
-  status?: 'Live' | 'In Development' | 'Case Study';
-  metrics?: string[];
+  status?: string;
+  problemStatement?: string;
+  solution?: string;
+  keyFeatures?: string[];
+  challengesLearning?: string;
+  futureEnhancements?: string[];
 }
 
 export interface SkillItem {
@@ -127,56 +132,96 @@ export const portfolioData: PortfolioData = {
     {
       id: "accident-hotspot",
       title: "Accident Hotspot Detection System",
-      description: "A smart map application that uses location clustering to find high-risk traffic zones and alert travelers in real time.",
-      techStack: ["React", "Python", "Flask", "PostgreSQL", "Leaflet Maps", "Tailwind CSS"],
-      githubUrl: "https://github.com",
-      liveUrl: "#",
+      description: "A geospatial analytics platform that clusters accident records and visualizes high-risk zones on an interactive map to improve road safety awareness.",
+      techStack: ["React", "Python", "Flask", "MongoDB", "Leaflet Maps"],
+      githubUrl: "https://github.com/mahi1107/accident-hotspot-detection",
+      liveUrl: "",
       featured: true,
       highlight: "Location mapping & safety alerts",
       size: "large",
-      imageUrl: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80",
+      imageUrl: "/accident-hotspot.jpg",
+      heroBanner: "/accident-hotspot.jpg",
       category: "Geospatial & Safety",
       teamIndicator: "Solo Project",
       status: "In Development",
-      metrics: ["10K+ map records processed", "92% route optimization", "Real-time clustering engine"]
+      problemStatement: "Road accident-prone areas are difficult to identify from raw traffic datasets, making preventive planning challenging for both travelers and authorities.",
+      solution: "Built a geospatial analytics platform that clusters accident records and visualizes high-risk zones on an interactive map to improve road safety awareness.",
+      keyFeatures: [
+        "Accident hotspot clustering",
+        "Interactive map visualization",
+        "High-risk zone identification",
+        "Geospatial data analysis",
+        "Route safety insights"
+      ],
+      challengesLearning: "Learned geospatial data processing, clustering techniques, map APIs, and full-stack integration.",
+      futureEnhancements: [
+        "Real-time traffic integration",
+        "Predictive accident analysis",
+        "Mobile application version"
+      ]
     },
     {
       id: "traveloop-ai",
       title: "Traveloop AI Travel Planner",
-      description: "An AI-powered travel planner that designs custom trip routes, suggests popular local spots, and sets up daily schedules automatically.",
-      techStack: ["Next.js", "Gemini LLM", "MongoDB", "Framer Motion", "Tailwind"],
+      description: "An AI-powered travel planner that creates personalized itineraries based on destination, budget, interests, and duration.",
+      techStack: ["Next.js", "Gemini API", "MongoDB", "Tailwind CSS", "Framer Motion"],
       githubUrl: "https://github.com/sk7dixit/Oddo_Hack",
-      liveUrl: "#",
+      liveUrl: "",
       featured: false,
       highlight: "Smart AI trip planner",
       size: "medium",
-      imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+      imageUrl: "/traveloop-ai.jpg",
+      heroBanner: "/traveloop-ai.jpg",
       category: "Artificial Intelligence",
       teamIndicator: "Hackathon Build",
       status: "In Development",
-      metrics: ["Gemini 1.5 Pro integration", "Multi-destination routing", "Adaptive scheduling"]
+      problemStatement: "Trip planning often requires users to browse multiple websites and manually organize travel schedules.",
+      solution: "Developed an AI-powered travel planner that creates personalized itineraries based on destination, budget, interests, and duration.",
+      keyFeatures: [
+        "AI-generated itineraries",
+        "Budget-based planning",
+        "Personalized recommendations",
+        "Day-wise travel schedules",
+        "Destination discovery"
+      ],
+      challengesLearning: "Worked with AI APIs, prompt engineering, state management, and responsive UI design.",
+      futureEnhancements: [
+        "Hotel integration",
+        "Flight booking integration",
+        "Collaborative trip planning"
+      ]
     },
     {
       id: "vaanidoc",
       title: "VaaniDoc",
-      description: "An AI-powered healthcare documentation assistant that converts doctor-patient conversations into structured medical records, reducing administrative workload and improving clinical efficiency.",
-      techStack: ["Next.js", "Python", "FastAPI", "OpenAI", "MongoDB", "Tailwind CSS"],
-      githubUrl: "https://github.com",
-      liveUrl: "#",
+      description: "An AI-powered healthcare assistant that converts doctor-patient conversations into structured clinical documentation.",
+      techStack: ["React", "Node.js", "Python", "Speech Recognition APIs", "Generative AI"],
+      githubUrl: "https://github.com/mahi1107/vaanidoc",
+      liveUrl: "",
       featured: true,
       highlight: "AI medical transcription & clinical documentation",
       size: "large",
-      imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
+      imageUrl: "/vaanidoc.jpg",
+      heroBanner: "/vaanidoc.jpg",
       category: "Healthcare AI",
       teamIndicator: "Solo Project",
       status: "In Development",
-      metrics: [
-        "95%+ transcription accuracy",
-        "Automated SOAP note generation",
-        "Real-time voice-to-medical-record conversion"
+      problemStatement: "Doctors spend significant time creating medical documentation, reducing time available for patient interaction.",
+      solution: "Designed an AI-powered healthcare assistant that converts doctor-patient conversations into structured clinical documentation.",
+      keyFeatures: [
+        "Voice-to-text transcription",
+        "AI-generated medical notes",
+        "Clinical summary generation",
+        "Structured healthcare records",
+        "Workflow automation"
+      ],
+      challengesLearning: "Learned speech processing workflows, healthcare data structuring, and AI-powered document generation.",
+      futureEnhancements: [
+        "Multi-language support",
+        "Electronic Health Record integration",
+        "Smart prescription generation"
       ]
     }
-
   ],
   achievements: [
     {

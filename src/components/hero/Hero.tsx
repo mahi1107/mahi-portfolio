@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext, useNavigate } from 'react-router-dom';
 import { portfolioData } from '../../data/portfolioData';
 import { ArrowRight, Sparkles, Cpu, Layers } from 'lucide-react';
 import { ShinyButton } from '../ui/shiny-button';
 
 export default function Hero() {
+  const navigate = useNavigate();
   const { brandIdentity } = useOutletContext<{ brandIdentity: any }>();
 
   const heroConfig = brandIdentity?.hero || {
@@ -62,9 +63,8 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, [dynamicLines.length]);
 
-  const handleScroll = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  const handleScroll = (url: string) => {
+    navigate('/' + url);
   };
 
   const gradientTextClass = {

@@ -54,3 +54,9 @@ coverage/
 # Serverless directories
 .serverless/
 .serverless_plugins/
+
+# Development and Runner files
+command.txt
+command_output.txt
+compress.js
+*.mjs

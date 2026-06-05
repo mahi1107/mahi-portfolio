@@ -235,7 +235,7 @@ export default function JourneyPage() {
         style={{ backgroundSize: '40px 40px' }}
       />
 
-      <div ref={containerRef} className="w-full relative z-10 pt-10 sm:pt-16 md:pt-24 pb-20 max-w-7xl mx-auto px-6">
+      <div ref={containerRef} className="w-full relative z-10 pt-24 sm:pt-24 md:pt-24 pb-20 max-w-7xl mx-auto px-6">
 
         {/* Dynamic cinematic Section Header */}
         <Section

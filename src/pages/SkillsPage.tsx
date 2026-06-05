@@ -562,7 +562,7 @@ export default function SkillsPage() {
   const [orbitTitle, setOrbitTitle] = useState("Mahi Singh");
   const [orbitSubtitle, setOrbitSubtitle] = useState("Full Stack + AI");
   const [orbitDescription, setOrbitDescription] = useState("Creating premium user interfaces, analytical backend architectures, and intelligent systems.");
-  const [orbitRadius, setOrbitRadius] = useState(185);
+  const [orbitRadius, setOrbitRadius] = useState(231);
   const [orbitGlow, setOrbitGlow] = useState(75);
   const [orbitSpeed, setOrbitSpeed] = useState(25);
   const [orbitSkills, setOrbitSkills] = useState<SkillNode[]>(skillsList);
@@ -718,7 +718,7 @@ export default function SkillsPage() {
 
             {/* Centerpiece: Interactive Radar/Orbit Visualizer */}
             <div
-              className="relative w-full h-[340px] md:h-[640px] flex items-center justify-center overflow-visible my-8 select-none origin-center"
+              className="relative w-full h-[425px] md:h-[800px] flex items-center justify-center overflow-visible my-8 select-none origin-center"
               style={isMobile ? { transform: 'scale(0.72)', transformOrigin: 'center center' } : undefined}
             >
 
@@ -776,7 +776,7 @@ export default function SkillsPage() {
               </div>
 
               {/* Layer 3: Layered Glass-Core Centerpiece Hub */}
-              <div className="absolute z-30 w-[190px] h-[190px] md:w-[250px] md:h-[250px] flex items-center justify-center pointer-events-auto">
+              <div className="absolute z-30 w-[238px] h-[238px] md:w-[312px] md:h-[312px] flex items-center justify-center pointer-events-auto">
                 {/* Outer Ambient Glow Ring */}
                 <div
                   className="absolute inset-0 rounded-full blur-xl opacity-75 animate-pulse transition-colors duration-500"
@@ -874,7 +874,7 @@ export default function SkillsPage() {
                 {/* Connection lines for Ring 1 nodes */}
                 <svg
                   className="absolute inset-0 pointer-events-none z-0 overflow-visible w-full h-full"
-                  viewBox="-300 -300 600 600"
+                  viewBox="-375 -375 750 750"
                 >
                   {orbitSkills.filter(n => n.ring === 1).map((node) => {
                     const { x, y } = getCoordinates(node.angle, node.ring);
@@ -996,7 +996,7 @@ export default function SkillsPage() {
                 {/* connection lines for Ring 2 nodes */}
                 <svg
                   className="absolute inset-0 pointer-events-none z-0 overflow-visible w-full h-full"
-                  viewBox="-300 -300 600 600"
+                  viewBox="-375 -375 750 750"
                 >
                   {orbitSkills.filter(n => n.ring === 2 && !isMobile).map((node) => {
                     const { x, y } = getCoordinates(node.angle, node.ring);
